@@ -70,9 +70,9 @@ common_core () {
 call_methods () {
     rm -rf "$DT_DIR" && mkdir -p "$DT_DIR"
     # create repo's
-    if [[ "$ORGMEMBER" == "y" ]] && [[ ! -z "$GIT_TOKEN" ]]; then
-        ORG="AndroidBlobs"
-        GITHUB_EMAIL="${ORG}@github.com"
+    if [[ ! -z "$GIT_TOKEN" ]]; then
+        ORG="something6969"
+        #GITHUB_EMAIL="${ORG}@github.com"
         curl -s -X POST -H "Authorization: token ${GIT_TOKEN}" -d '{"name": "'"$DT_REPO"'","description": "'"$DT_REPO_DESC"'","private": false,"has_issues": true,"has_projects": false,"has_wiki": true}' "https://api.github.com/orgs/$ORG/repos" > /dev/null 2>&1
         curl -s -X POST -H "Authorization: token ${GIT_TOKEN}" -d '{"name": "'"$VT_REPO"'","description": "'"$VT_REPO_DESC"'","private": false,"has_issues": true,"has_projects": false,"has_wiki": true}' "https://api.github.com/orgs/$ORG/repos" > /dev/null 2>&1
         curl -s -X PUT -H "Authorization: token ${GIT_TOKEN}" -H "Accept: application/vnd.github.mercy-preview+json" -d '{ "names": ["'"$TOPIC1"'","'"$TOPIC2"'","'"$TOPIC3"'"]}' "https://api.github.com/repos/${ORG}/${DT_REPO}/topics" > /dev/null 2>&1
@@ -106,7 +106,7 @@ git_op () {
     git init . > /dev/null 2>&1
     git checkout -b $BRANCH > /dev/null 2>&1
     git add --all > /dev/null 2>&1
-    git -c "user.name=ShivamKumarJha" -c "user.email=jha.shivam3@gmail.com" commit -sm "$DESCRIPTION" > /dev/null 2>&1
+    git -c "user.name=saurajbot" -c "user.email=rommirrorer@gmail.com" commit -sm "$DESCRIPTION" > /dev/null 2>&1
     git push https://"$GIT_TOKEN"@github.com/"$ORG"/"$DT_REPO".git --all > /dev/null 2>&1
     echo -e "Dumping blobs"
     rm -rf "$PROJECT_DIR"/vendor/"$BRAND"/"$DEVICE"/
@@ -121,7 +121,7 @@ git_op () {
     git -c "user.name=$ORG" -c "user.email=$GITHUB_EMAIL" commit -sm "$DESCRIPTION" > /dev/null 2>&1
     git push https://"$GIT_TOKEN"@github.com/"$ORG"/"$VT_REPO".git --all > /dev/null 2>&1
     # Telegram
-    if [ ! -z "$TG_API" ] && [[ "$ORGMEMBER" == "y" ]]; then
+    if [ ! -z "$TG_API" ]; then
         [[ "$VERBOSE" != "n" ]] && echo -e "Sending telegram notification"
         printf "<b>Brand: $BRAND</b>" > $PROJECT_DIR/dummy_dt/working/tg.html
         printf "\n<b>Device: $DEVICE</b>" >> $PROJECT_DIR/dummy_dt/working/tg.html
@@ -132,7 +132,7 @@ git_op () {
         printf "\n<b>GitHub:</b>" >> $PROJECT_DIR/dummy_dt/working/tg.html
         printf "\n<a href=\"https://github.com/$ORG/$DT_REPO/tree/$BRANCH/\">Device tree</a>" >> $PROJECT_DIR/dummy_dt/working/tg.html
         printf "\n<a href=\"https://github.com/$ORG/$VT_REPO/tree/$BRANCH/\">Vendor tree</a>" >> $PROJECT_DIR/dummy_dt/working/tg.html
-        CHAT_ID="@dummy_dt"
+        CHAT_ID="@saurajdumps"
         HTML_FILE=$(cat $PROJECT_DIR/dummy_dt/working/tg.html)
         curl -s "https://api.telegram.org/bot${TG_API}/sendmessage" --data "text=${HTML_FILE}&chat_id=${CHAT_ID}&parse_mode=HTML&disable_web_page_preview=True" > /dev/null 2>&1
     fi
