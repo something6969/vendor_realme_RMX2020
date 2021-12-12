@@ -1,0 +1,1 @@
+system/system/etc/selinux/plat_mac_permissions.xml
