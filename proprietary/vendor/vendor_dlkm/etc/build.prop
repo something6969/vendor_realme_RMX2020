@@ -1,0 +1,22 @@
+####################################
+# from generate-common-build-props
+# These properties identify this partition image.
+####################################
+ro.product.vendor_dlkm.brand=realme
+ro.product.vendor_dlkm.device=RMX2020
+ro.product.vendor_dlkm.manufacturer=realme
+ro.product.vendor_dlkm.model=realme Monet
+ro.product.vendor_dlkm.name=RMX2020
+ro.vendor_dlkm.build.date=Mon Mar  7 23:55:05 UTC 2022
+ro.vendor_dlkm.build.date.utc=1646697305
+ro.vendor_dlkm.build.fingerprint=realme/RMX2020/RMX2020:12/SP2A.220305.012/neolit03072355:userdebug/test-keys
+ro.vendor_dlkm.build.id=SP2A.220305.012
+ro.vendor_dlkm.build.tags=test-keys
+ro.vendor_dlkm.build.type=userdebug
+ro.vendor_dlkm.build.version.incremental=eng.neolit.20220307.235625
+ro.vendor_dlkm.build.version.release=12
+ro.vendor_dlkm.build.version.release_or_codename=12
+ro.vendor_dlkm.build.version.sdk=32
+# Auto-added by post_process_props.py
+persist.sys.usb.config=none
+# end of file
